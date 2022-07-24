@@ -1,8 +1,15 @@
 # Write your code here.
 
 def get_number_of_teams():
-    pass
-
+    MIN_NUM_TEAMS = 2
+    while True:
+        num_teams = int(input('Enter the number of teams in the tournament: '))
+        if num_teams < MIN_NUM_TEAMS:
+            print(f'The minimum number of teams is {MIN_NUM_TEAMS}, try again.')
+        elif num_teams % MIN_NUM_TEAMS == 0 and num_teams >= MIN_NUM_TEAMS:
+            break
+    
+    return num_teams
 
 def get_team_names(num_teams):
     pass
