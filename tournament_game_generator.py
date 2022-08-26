@@ -13,7 +13,7 @@ def get_number_of_teams() -> int:
     
     return num_teams
 
-def get_team_names(num_teams):
+def get_team_names(num_teams) -> dict:
     team_names = {}
     for team in range(1,num_teams+1):
         team_num = f'team #{str(team)}'
@@ -28,8 +28,19 @@ def get_team_names(num_teams):
         team_names[team] = name_of_team
     # for item in team_names.items():
         # print(item)
-def get_number_of_games_played(num_teams):
-    pass
+    return team_names
+def get_number_of_games_played(num_teams) -> int:
+    while True:
+        games_played = int(input("Enter the number of games played by each team: "))
+
+        if games_played >= num_teams - 1:
+            break
+        
+        print("Invalid number of games. Each team plays each other at least" + \
+              "once in the regular season")
+
+    return games_played
+
 
 
 def get_team_wins(team_names, games_played):
