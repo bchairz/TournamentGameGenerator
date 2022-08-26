@@ -37,7 +37,7 @@ def get_number_of_games_played(num_teams) -> int:
             break
         
         print("Invalid number of games. Each team plays each other at least" + \
-              "once in the regular season")
+              " once in the regular season")
 
     return games_played
 
