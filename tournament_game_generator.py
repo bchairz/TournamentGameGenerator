@@ -67,9 +67,11 @@ def get_team_wins(team_names, games_played):
                 print(f"The maximum number of wins is {games_played}, try again.")
         
         team_wins.append((team, wins))
-        print(team_wins)
     
     return team_wins
+
+def sort_by_second_item(item):
+    return item[1]
 
 num_teams = get_number_of_teams()
 team_names = get_team_names(num_teams)
@@ -77,3 +79,17 @@ games_played = get_number_of_games_played(num_teams)
 team_wins = get_team_wins(team_names, games_played)
 
 print("Generating the games to be played in the first round of the tournament...")
+sorted_teams = sorted(team_wins, key=sort_by_second_item)
+game_pairings = []
+
+games_to_make = len(sorted_teams) // 2 #can only be the amount of -> teams
+                                       #divided by 2 (one versus one per game)
+
+for game_num in range(games_to_make):
+    home_team = sorted_teams[game_num][0]
+    away_team = sorted_teams[num_teams - 1 - game_num][0]
+    game_pairings.append([home_team, away_team])
+
+for pairing in game_pairings:
+    home_team, away_team = pairing
+    print(f"Home: {home_team} VS Away: {away_team}")
